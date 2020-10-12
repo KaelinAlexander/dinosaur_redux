@@ -6,8 +6,11 @@ const Navbar = (props) => {
         <nav>
             <a>Dinosaurs</a>
             <ul>
-                <li></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
             </ul>
         </nav>
     )
 }
+
+export default withRouter(Navbar)
