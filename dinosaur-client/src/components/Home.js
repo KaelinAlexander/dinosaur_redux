@@ -1,31 +1,41 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchDinosaurs } from '../actions/fetchDinosaurs'
+import { fetchDinosaurs } from '../actions/dinosaurActions'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
 
-    handleOnClick() {
+    componentDidMount() {
+        console.log(this.props)
         this.props.fetchDinosaurs()
     }
 
-    render() {
-    const dinosaurs = this.props.dinosaurs.map(dino => <li key={dino.id}>{dino.genus}</li>)
+    handleLoading = () => {
+        if(this.props.loading) {
+            return <div>Loading...</div>
+        } else {
+            return this.props.dinosaurs.map(dino => <li key={dino.id}>{dino.genus}</li>)
+        }
+    }
+
+    render() {    
         return (
             <div>
-                <button onClick={(event) => this.handleOnClick(event)} />
-                { dinosaurs }
+                {this.handleLoading()}
             </div>
         );
     }
 };
 
-function mapDispatchToProps(dispatch) {
-    return { fetchDinosaurs: () => dispatch(fetchDinosaurs())}
+const mapStateToProps = (state) => {
+    return {
+        loading: state.loading,
+        dinosaurs: state.dinosaurs
+    }
 }
 
-function mapStateToProps(state) {
-    return {dinosaurs: state.dinosaurs}
+const mapDispatchToProps = (dispatch) => {
+    return { fetchDinosaurs: () => dispatch(fetchDinosaurs())}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

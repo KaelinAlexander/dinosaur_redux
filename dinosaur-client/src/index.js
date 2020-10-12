@@ -5,16 +5,14 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import rootReducer from './reducers'
+import dinosaursReducer from './reducers/dinosaursReducer'
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(dinosaursReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 
