@@ -12,9 +12,21 @@ class Home extends Component {
 
     handleLoading = () => {
         if(this.props.loading) {
-            return <div>Loading...</div>
+            return(
+            <div className="columns">
+            <div className="column">Loading...</div>
+            </div>
+            )
         } else {
-            return this.props.dinosaurs.map(dino => <li key={dino.id}>{dino.genus}</li>)
+            return (
+            <div className="columns is-multiline">
+                {this.props.dinosaurs.map(dino => 
+                <div className="column is-one-quarter" key={dino.id}>
+                <h1 className="is-size-3 title">{dino.genus}</h1>
+                </div>
+                )}
+            </div>
+            )
         }
     }
 
