@@ -21,12 +21,8 @@ ActiveRecord::Schema.define(version: 2020_10_12_181657) do
     t.string "discovery_person"
     t.float "size"
     t.string "period"
-    t.string "start_stage"
-    t.string "end_stage"
     t.string "distribution"
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
