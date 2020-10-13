@@ -35,3 +35,13 @@ export const newDinosaur = (formData) => {
         .then(dinosaur => console.log(dinosaur))
     }
 }
+
+export const deleteDinosaur = (id) => {
+    return (dispatch) => {
+        fetch('http://localhost:3001/dinosaurs/' + id, {
+            method: "DELETE"
+        })
+        .then(response => console.log(response))
+        .then(dinosaur => console.log("Deleted!"))
+    }
+}
