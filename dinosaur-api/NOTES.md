@@ -16,4 +16,4 @@ period: string
 distribution: string
 description: text
 
-rails g scaffold dinosaurs genus:string grouping:string meaning:string type_species:string discovery_year:integer discovery_person:string size:float period:string start_stage:string end_stage:string distribution:string description:text
+rails g scaffold dinosaurs genus:string grouping:string meaning:string type_species:string discovery_year:integer discovery_person:string size:float period:string distribution:string description:text

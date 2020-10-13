@@ -1,6 +1,32 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class AddDinosaur extends Component {
+
+    state = {
+        genus: "",
+        grouping: "",
+        meaning: "",
+        type_species: "",
+        discovery_year: 1800,
+        discovery_person: "",
+        size: 1.0,
+        period: "",
+        distribution: "",
+        description: ""
+    };
+
+    handleChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+        console.log(this.state.genus)
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+        this.props.addDinosaur(this.state);
+    }
 
     render() {
 
@@ -10,7 +36,10 @@ class AddDinosaur extends Component {
                     <div className="field">
                         <label className="label">Name</label>
                         <div className="control">
-                            <input className="input" type="text" name="genus" />
+                            <input className="input" type="text" name="genus" 
+                            value={this.state.genus}
+                            onChange={event => this.handleChange(event)}
+                             />
                         </div>
                     </div>
 
@@ -25,14 +54,14 @@ class AddDinosaur extends Component {
                         <label className="label">Grouping</label>
                         <div className="select" name="grouping">
                             <select>
-                                <option>Ankylosauria</option>
-                                <option>Stegosauria</option>
-                                <option>Pachycephalosauria</option>
-                                <option>Ceratopsia</option>
-                                <option>Ornithopoda</option>
-                                <option>Prosauropoda</option>
-                                <option>Sauropoda</option>
-                                <option>Theropoda</option>
+                                <option>Ankylosaur</option>
+                                <option>Stegosaur</option>
+                                <option>Pachycephalosaur</option>
+                                <option>Ceratopsid</option>
+                                <option>Ornithopod</option>
+                                <option>Prosauropod</option>
+                                <option>Sauropod</option>
+                                <option>Theropod</option>
                             </select>
                         </div>
                     </div>
@@ -59,7 +88,7 @@ class AddDinosaur extends Component {
                     <div className="field">
                         <label className="label">Size (in Meters)</label>
                         <div className="control">
-                            <input className="input" type="number" name="discovery_person" />
+                            <input className="input" type="number" name="size" />
                         </div>
                     </div>
 
@@ -83,6 +112,14 @@ class AddDinosaur extends Component {
                             <input className="input" type="text" name="distribution" />
                         </div>
                     </div>
+
+                    <div className="field">
+                        <label className="label">Description</label>
+                        <div className="control">
+                            <input className="textarea" type="number" name="description" />
+                        </div>
+                    </div>
+
 
                     <div className="field">
                         <div className="control">
