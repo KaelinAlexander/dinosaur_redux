@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { newDinosaur } from '../actions/dinosaurActions'
 
-class AddDinosaur extends Component {
+class NewDinosaur extends Component {
 
     state = {
         genus: "",
@@ -20,19 +21,38 @@ class AddDinosaur extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-        console.log(this.state.genus)
+        console.log(this.state)
     }
+
+    handleGroupingChange = event => {
+        let idx = event.target.selectedIndex
+        let new_grouping = event.target[idx].value
+        this.setState({
+            grouping: new_grouping
+        })
+        console.log(this.state)
+    }
+
+    handlePeriodChange = event => {
+        let idx = event.target.selectedIndex
+        let new_period = event.target[idx].value
+        this.setState({
+            period: new_period
+        })
+        console.log(this.state)
+    }
+
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.addDinosaur(this.state);
+        this.props.newDinosaur(this.state);
     }
 
     render() {
 
         return(
             <div>
-                <form>
+                <form onSubmit={event => this.handleSubmit(event)}>
                     <div className="field">
                         <label className="label">Name</label>
                         <div className="control">
@@ -46,22 +66,27 @@ class AddDinosaur extends Component {
                     <div className="field">
                         <label className="label">Meaning of Name</label>
                         <div className="control">
-                            <input className="input" type="text" name="meaning" />
+                            <input className="input" type="text" name="meaning" 
+                            value={this.state.meaning}
+                            onChange={event => this.handleChange(event)}
+                            />
                         </div>
                     </div>
 
                     <div className="field">
                         <label className="label">Grouping</label>
                         <div className="select" name="grouping">
-                            <select>
-                                <option>Ankylosaur</option>
-                                <option>Stegosaur</option>
-                                <option>Pachycephalosaur</option>
-                                <option>Ceratopsid</option>
-                                <option>Ornithopod</option>
-                                <option>Prosauropod</option>
-                                <option>Sauropod</option>
-                                <option>Theropod</option>
+                            <select
+                            value={this.state.grouping}
+                            onChange={event => this.handleGroupingChange(event)}>
+                                <option value="Ankylosaur">Ankylosaur</option>
+                                <option value="Stegosaur">Stegosaur</option>
+                                <option value="Pachycephalosaur">Pachycephalosaur</option>
+                                <option value="Ceratopsid">Ceratopsid</option>
+                                <option value="Ornithopod">Ornithopod</option>
+                                <option value="Prosauropod">Prosauropod</option>
+                                <option value="Sauropod">Sauropod</option>
+                                <option value="Theropod">Theropod</option>
                             </select>
                         </div>
                     </div>
@@ -69,33 +94,47 @@ class AddDinosaur extends Component {
                     <div className="field">
                         <label className="label">Type Species</label>
                         <div className="control">
-                            <input className="input" type="text" name="type_species" />
+                            <input className="input" type="text" name="type_species" 
+                            value={this.state.type_species}
+                            onChange={event => this.handleChange(event)}
+                            />
                         </div>
                     </div>
 
                     <div className="field is-grouped">
                         <label className="label">Discovery Year</label>
                         <div className="control">
-                            <input className="input" type="number" name="discovery_year" min="1800" max="2020" />
+                            <input className="input" type="number" name="discovery_year" min="1800" max="2020" 
+                            value={this.state.discovery_year}
+                            onChange={event => this.handleChange(event)}
+                            />
                         </div>
 
                         <label className="label">Discovered By</label>
                         <div className="control">
-                            <input className="input" type="text" name="discovery_person" />
+                            <input className="input" type="text" name="discovery_person" 
+                            value={this.state.discovery_person}
+                            onChange={event => this.handleChange(event)}    
+                            />
                         </div>
                     </div>
 
                     <div className="field">
                         <label className="label">Size (in Meters)</label>
                         <div className="control">
-                            <input className="input" type="number" name="size" />
+                            <input className="input" type="number" name="size" 
+                            value={this.state.size}
+                            onChange={event => this.handleChange(event)}
+                            />
                         </div>
                     </div>
 
                     <div className="field is-grouped">
                         <label className="label">When did it live?</label>
                         <div className="select" name="period">
-                            <select>
+                            <select
+                            value={this.state.period}
+                            onChange={event => this.handlePeriodChange(event)}>
                                 <option>Early Triassic</option>
                                 <option>Middle Triassic</option>
                                 <option>Late Triassic</option>
@@ -109,17 +148,22 @@ class AddDinosaur extends Component {
 
                         <label className="label">Where did it live?</label>
                         <div className="control">
-                            <input className="input" type="text" name="distribution" />
+                            <input className="input" type="text" name="distribution" 
+                            value={this.state.distribution}
+                            onChange={event => this.handleChange(event)}
+                            />
                         </div>
                     </div>
 
                     <div className="field">
                         <label className="label">Description</label>
                         <div className="control">
-                            <input className="textarea" type="number" name="description" />
+                            <input className="textarea" type="number" name="description" 
+                            value={this.state.description}
+                            onChange={event => this.handleChange(event)}
+                            />
                         </div>
                     </div>
-
 
                     <div className="field">
                         <div className="control">
@@ -131,7 +175,10 @@ class AddDinosaur extends Component {
             </div>
         )
     }
-
 }
 
-export default AddDinosaur
+const mapDispatchToProps = dispatch => {
+    return { newDinosaur: (formData) => dispatch(newDinosaur(formData)) }
+}
+
+export default connect(null, mapDispatchToProps)(NewDinosaur)

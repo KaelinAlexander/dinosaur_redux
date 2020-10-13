@@ -15,6 +15,11 @@ const dinosaursReducer = (state = { loading: false, dinosaurs: [] }, action) => 
                 loading: false
             }
 
+        case 'NEW_DINOSAUR':
+            return {
+                
+            }
+
         default:
             return state;
     }
