@@ -13,7 +13,7 @@ class Home extends Component {
     handleLoading = () => {
         if(this.props.loading) {
             return(
-            <div className="columns">
+            <div className="columns is-multiline">
             <div className="column">Loading...</div>
             </div>
             )
@@ -21,8 +21,23 @@ class Home extends Component {
             return (
             <div className="columns is-multiline">
                 {this.props.dinosaurs.map(dino => 
-                <div className="column is-one-quarter" key={dino.id}>
-                <h1 className="is-size-3 title">{dino.genus}</h1>
+                <div className="column is-one-third" key={dino.id}>
+                    <div className="card">
+                        <div className="card-content">
+                            <p className="title">{dino.genus}</p>
+                       </div>
+                       <footer className="card-footer">
+                           <p className="card-footer-item">
+                              <Link to="/about">View</Link> 
+                           </p>
+                           <p className="card-footer-item">
+                              <Link to="/about">Edit</Link> 
+                           </p>
+                           <p className="card-footer-item">
+                              <Link to="/about">Delete</Link> 
+                           </p>
+                       </footer>
+                    </div>
                 </div>
                 )}
             </div>
