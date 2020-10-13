@@ -15,6 +15,7 @@ const Navbar = (props) => {
                 <div className="navbar-end py-2 px-6">
                     <Link className="navbar-item is-size-3 has-text-weight-bold" to="/">Home</Link>
                     <Link className="navbar-item is-size-3 has-text-weight-bold" to="/about">About</Link>
+                    <Link className="navbar-item is-size-3 has-text-weight-bold" to="/dinosaurs/new">Add</Link>
                 </div>
             </div>
         </nav>

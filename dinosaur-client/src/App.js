@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
+import AddDinosaur from './components/AddDinosaur'
 import './App.sass';
 
 class App extends Component {
@@ -17,6 +18,7 @@ render() {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/about" component={About} />
+                <Route path="/dinosaurs/new" component={AddDinosaur} />
               </Switch>
             </div>
           </section>
