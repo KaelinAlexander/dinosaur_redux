@@ -28,7 +28,7 @@ class Home extends Component {
                        </div>
                        <footer className="card-footer">
                            <p className="card-footer-item">
-                              <Link to="/about">View</Link> 
+                              <Link to={"/dinosaurs/" + dino.id }>View</Link> 
                            </p>
                            <p className="card-footer-item">
                               <Link to="/about">Edit</Link> 

@@ -9,9 +9,9 @@ class NewDinosaur extends Component {
         grouping: "",
         meaning: "",
         type_species: "",
-        discovery_year: 1800,
+        discovery_year: "1800",
         discovery_person: "",
-        size: 1.0,
+        size: "1.0",
         period: "",
         distribution: "",
         description: ""
@@ -62,76 +62,91 @@ class NewDinosaur extends Component {
                              />
                         </div>
                     </div>
-
-                    <div className="field">
-                        <label className="label">Meaning of Name</label>
-                        <div className="control">
-                            <input className="input" type="text" name="meaning" 
-                            value={this.state.meaning}
-                            onChange={event => this.handleChange(event)}
-                            />
+                    <div className="columns">
+                        <div className="column is-one-third">
+                                <div className="field">
+                                    <label className="label">Grouping</label>
+                                    <div className="select is-fullwidth" name="grouping">
+                                        <select
+                                        value={this.state.grouping}
+                                        onChange={event => this.handleGroupingChange(event)}>
+                                            <option value="Ankylosaur">Ankylosaur</option>
+                                            <option value="Stegosaur">Stegosaur</option>
+                                            <option value="Pachycephalosaur">Pachycephalosaur</option>
+                                            <option value="Ceratopsid">Ceratopsid</option>
+                                            <option value="Ornithopod">Ornithopod</option>
+                                            <option value="Prosauropod">Prosauropod</option>
+                                            <option value="Sauropod">Sauropod</option>
+                                            <option value="Theropod">Theropod</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        <div className="column is-one-third">
+                            <div className="field">
+                                <label className="label">Meaning of Name</label>
+                                <div className="control">
+                                    <input className="input" type="text" name="meaning" 
+                                    value={this.state.meaning}
+                                    onChange={event => this.handleChange(event)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="column is-one-third">
+                            <div className="field">
+                                <label className="label">Type Species</label>
+                                <div className="control">
+                                    <input className="input" type="text" name="type_species" 
+                                    value={this.state.type_species}
+                                    onChange={event => this.handleChange(event)}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="field">
-                        <label className="label">Grouping</label>
-                        <div className="select" name="grouping">
-                            <select
-                            value={this.state.grouping}
-                            onChange={event => this.handleGroupingChange(event)}>
-                                <option value="Ankylosaur">Ankylosaur</option>
-                                <option value="Stegosaur">Stegosaur</option>
-                                <option value="Pachycephalosaur">Pachycephalosaur</option>
-                                <option value="Ceratopsid">Ceratopsid</option>
-                                <option value="Ornithopod">Ornithopod</option>
-                                <option value="Prosauropod">Prosauropod</option>
-                                <option value="Sauropod">Sauropod</option>
-                                <option value="Theropod">Theropod</option>
-                            </select>
+                    <div className="columns">
+                        <div className="column is-half">
+                            <div className="field">
+                                    <label className="label">Discovery Year</label>
+                                    <div className="control">
+                                        <input className="input" type="number" name="discovery_year" min="1800" max="2020" 
+                                        value={this.state.discovery_year}
+                                        onChange={event => this.handleChange(event)}
+                                        />
+                                    </div>
+                            </div>
+                        </div>
+                        <div className="column is-half">
+                            <div className="field">
+                                <label className="label">Discovered By</label>
+                                <div className="control">
+                                    <input className="input" type="text" name="discovery_person" 
+                                    value={this.state.discovery_person}
+                                    onChange={event => this.handleChange(event)}    
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="field">
-                        <label className="label">Type Species</label>
-                        <div className="control">
-                            <input className="input" type="text" name="type_species" 
-                            value={this.state.type_species}
-                            onChange={event => this.handleChange(event)}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="field is-grouped">
-                        <label className="label">Discovery Year</label>
-                        <div className="control">
-                            <input className="input" type="number" name="discovery_year" min="1800" max="2020" 
-                            value={this.state.discovery_year}
-                            onChange={event => this.handleChange(event)}
-                            />
-                        </div>
-
-                        <label className="label">Discovered By</label>
-                        <div className="control">
-                            <input className="input" type="text" name="discovery_person" 
-                            value={this.state.discovery_person}
-                            onChange={event => this.handleChange(event)}    
-                            />
-                        </div>
-                    </div>
-
+                    <div className="columns">
+                    <div className="column is-one-third">
                     <div className="field">
                         <label className="label">Size (in Meters)</label>
                         <div className="control">
-                            <input className="input" type="number" name="size" 
+                            <input className="input" type="number" name="size" step="0.1" placeholder="1.0"
                             value={this.state.size}
                             onChange={event => this.handleChange(event)}
                             />
                         </div>
                     </div>
-
-                    <div className="field is-grouped">
+                    </div>
+                    <div className="column is-one-third">
+                    <div className="field">
                         <label className="label">When did it live?</label>
-                        <div className="select" name="period">
+                        <div className="select is-fullwidth" name="period">
                             <select
                             value={this.state.period}
                             onChange={event => this.handlePeriodChange(event)}>
@@ -145,7 +160,10 @@ class NewDinosaur extends Component {
                                 <option>Late Creataceous</option>
                             </select>
                         </div>
-
+                    </div>
+                    </div>
+                    <div className="column is-one-third">
+                    <div className="field">
                         <label className="label">Where did it live?</label>
                         <div className="control">
                             <input className="input" type="text" name="distribution" 
@@ -153,6 +171,8 @@ class NewDinosaur extends Component {
                             onChange={event => this.handleChange(event)}
                             />
                         </div>
+                    </div>
+                    </div>
                     </div>
 
                     <div className="field">
