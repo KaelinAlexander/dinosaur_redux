@@ -21,7 +21,6 @@ class NewDinosaur extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-        console.log(this.state)
     }
 
     handleGroupingChange = event => {
@@ -157,7 +156,7 @@ class NewDinosaur extends Component {
                                 <option>Middle Jurassic</option>
                                 <option>Late Jurassic</option>
                                 <option>Early Cretaceous</option>
-                                <option>Late Creataceous</option>
+                                <option>Late Cretaceous</option>
                             </select>
                         </div>
                     </div>
@@ -178,7 +177,7 @@ class NewDinosaur extends Component {
                     <div className="field">
                         <label className="label">Description</label>
                         <div className="control">
-                            <input className="textarea" type="number" name="description" 
+                            <input className="textarea" type="textarea" name="description" 
                             value={this.state.description}
                             onChange={event => this.handleChange(event)}
                             />

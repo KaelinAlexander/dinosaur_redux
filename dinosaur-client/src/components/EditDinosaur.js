@@ -4,11 +4,23 @@ import { editDinosaur } from '../actions/dinosaurActions'
 
 class EditDinosaur extends Component {
 
+    state = { 
+            genus: this.props.dinosaur.genus,
+            grouping: this.props.dinosaur.grouping,
+            meaning: this.props.dinosaur.meaning,
+            type_species: this.props.dinosaur.type_species,
+            discovery_year: this.props.dinosaur.discovery_year,
+            discovery_person: this.props.dinosaur.discovery_person,
+            size: this.props.dinosaur.size,
+            period: this.props.dinosaur.period,
+            distribution: this.props.dinosaur.distribution,
+            description: this.props.dinosaur.description
+        }
+
     handleChange = event => {
         this.setState({
             [event.target.name]: event.target.value
         })
-        console.log(this.state)
     }
 
     handleGroupingChange = event => {
@@ -29,24 +41,22 @@ class EditDinosaur extends Component {
         console.log(this.state)
     }
 
-
     handleSubmit = event => {
         event.preventDefault();
-        this.props.editDinosaur(this.props.dinosaur);
+        this.props.editDinosaur(this.state);
     }
 
-    render(props) {
+    render() {
 
-        return(
-            <div>
-            <h1>You've reached the dinosaur edit page!</h1>
-            {console.log(props)}
-                {/* <form onSubmit={event => this.handleSubmit(event)}>
+        const dinoToEdit = this.props.dinosaur ? (
+        <div>
+            <h1>You've reached the dinosaur edit page for {this.props.dinosaur.genus}!</h1>
+                <form onSubmit={event => this.handleSubmit(event)}>
                     <div className="field">
                         <label className="label">Name</label>
                         <div className="control">
                             <input className="input" type="text" name="genus" 
-                            value={props.dinosaur.genus}
+                            value={this.state.genus}
                             onChange={event => this.handleChange(event)}
                              />
                         </div>
@@ -57,7 +67,7 @@ class EditDinosaur extends Component {
                                     <label className="label">Grouping</label>
                                     <div className="select is-fullwidth" name="grouping">
                                         <select
-                                        value={this.props.dinosaur.grouping}
+                                        value={this.state.grouping}
                                         onChange={event => this.handleGroupingChange(event)}>
                                             <option value="Ankylosaur">Ankylosaur</option>
                                             <option value="Stegosaur">Stegosaur</option>
@@ -76,7 +86,7 @@ class EditDinosaur extends Component {
                                 <label className="label">Meaning of Name</label>
                                 <div className="control">
                                     <input className="input" type="text" name="meaning" 
-                                    value={this.props.dinosaur.meaning}
+                                    value={this.state.meaning}
                                     onChange={event => this.handleChange(event)}
                                     />
                                 </div>
@@ -87,7 +97,7 @@ class EditDinosaur extends Component {
                                 <label className="label">Type Species</label>
                                 <div className="control">
                                     <input className="input" type="text" name="type_species" 
-                                    value={this.props.dinosaur.type_species}
+                                    value={this.state.type_species}
                                     onChange={event => this.handleChange(event)}
                                     />
                                 </div>
@@ -101,7 +111,7 @@ class EditDinosaur extends Component {
                                     <label className="label">Discovery Year</label>
                                     <div className="control">
                                         <input className="input" type="number" name="discovery_year" min="1800" max="2020" 
-                                        value={this.props.dinosaur.discovery_year}
+                                        value={this.state.discovery_year}
                                         onChange={event => this.handleChange(event)}
                                         />
                                     </div>
@@ -112,7 +122,7 @@ class EditDinosaur extends Component {
                                 <label className="label">Discovered By</label>
                                 <div className="control">
                                     <input className="input" type="text" name="discovery_person" 
-                                    value={this.props.dinosaur.discovery_person}
+                                    value={this.state.discovery_person}
                                     onChange={event => this.handleChange(event)}    
                                     />
                                 </div>
@@ -126,7 +136,7 @@ class EditDinosaur extends Component {
                         <label className="label">Size (in Meters)</label>
                         <div className="control">
                             <input className="input" type="number" name="size" step="0.1" placeholder="1.0"
-                            value={this.props.dinosaur.size}
+                            value={this.state.size}
                             onChange={event => this.handleChange(event)}
                             />
                         </div>
@@ -137,7 +147,7 @@ class EditDinosaur extends Component {
                         <label className="label">When did it live?</label>
                         <div className="select is-fullwidth" name="period">
                             <select
-                            value={this.props.dinosaur.period}
+                            value={this.state.period}
                             onChange={event => this.handlePeriodChange(event)}>
                                 <option>Early Triassic</option>
                                 <option>Middle Triassic</option>
@@ -146,7 +156,7 @@ class EditDinosaur extends Component {
                                 <option>Middle Jurassic</option>
                                 <option>Late Jurassic</option>
                                 <option>Early Cretaceous</option>
-                                <option>Late Creataceous</option>
+                                <option>Late Cretaceous</option>
                             </select>
                         </div>
                     </div>
@@ -156,7 +166,7 @@ class EditDinosaur extends Component {
                         <label className="label">Where did it live?</label>
                         <div className="control">
                             <input className="input" type="text" name="distribution" 
-                            value={this.props.dinosaur.distribution}
+                            value={this.state.distribution}
                             onChange={event => this.handleChange(event)}
                             />
                         </div>
@@ -167,8 +177,8 @@ class EditDinosaur extends Component {
                     <div className="field">
                         <label className="label">Description</label>
                         <div className="control">
-                            <input className="textarea" type="number" name="description" 
-                            value={this.props.dinosaur.description}
+                            <input className="textarea" type="textarea" name="description" 
+                            value={this.state.description}
                             onChange={event => this.handleChange(event)}
                             />
                         </div>
@@ -179,17 +189,25 @@ class EditDinosaur extends Component {
                             <button className="button">Submit</button>
                         </div>
                     </div>
-
-                </form> */}
+                </form>   
             </div>
-        )
+            ) : (
+            <h1> Still loading... </h1>
+            )
+
+        return (
+            <div>
+                {dinoToEdit}
+            </div>
+        )     
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
     let id = parseInt(ownProps.match.params.dinosaur_id)
     return {
-      dinosaur: state.dinosaurs.find(dinosaur => dinosaur.id === id)
+        loading: false, 
+        dinosaur: state.dinosaurs.find(dinosaur => dinosaur.id === id)
     }
   }
 

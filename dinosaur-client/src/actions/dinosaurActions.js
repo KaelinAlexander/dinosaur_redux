@@ -46,8 +46,30 @@ export const deleteDinosaur = (id) => {
     }
 }
 
-export const editDinosaur = (id) => {
+export const editDinosaur = (formData) => {
     return (dispatch) => {
-        
-    }
+        const strongParams = {
+            dinosaur: {
+                genus: formData.genus,
+                grouping: formData.grouping,
+                meaning: formData.meaning,
+                type_species: formData.type_species,
+                discovery_year: formData.discovery_year,
+                discovery_person: formData.discovery_person,
+                size: formData.size,
+                period: formData.period,
+                distribution: formData.distribution,
+                description: formData.description
+            }
+        }
+        fetch('http://localhost:3001/dinosaurs/' + id, {
+            method: "PATCH",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(strongParams)
+        })
+        .then(resp => resp.json())
+        .then(dinosaur => console.log(dinosaur))
 }
