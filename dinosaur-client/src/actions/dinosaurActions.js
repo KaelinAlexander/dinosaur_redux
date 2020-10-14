@@ -8,6 +8,7 @@ export const fetchDinosaurs = () => {
 }
 
 export const newDinosaur = (formData) => {
+    debugger
     return (dispatch) => {
         const strongParams = {
             dinosaur: {
@@ -37,7 +38,6 @@ export const newDinosaur = (formData) => {
 }
 
 export const deleteDinosaur = (id) => {
-    debugger
     return (dispatch) => {
         fetch('http://localhost:3001/dinosaurs/' + id, {
             method: "DELETE"

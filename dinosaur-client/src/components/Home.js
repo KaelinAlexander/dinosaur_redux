@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { fetchDinosaurs } from '../actions/dinosaurActions'
 import { deleteDinosaur } from '../actions/dinosaurActions'
 import { Link } from 'react-router-dom'
+import Sauropod from '../assets/groups/Sauropod.jpg'
+import Theropod from '../assets/groups/Theropod.jpg'
 
 class Home extends Component {
 
@@ -24,14 +26,21 @@ class Home extends Component {
             </div>
             )
         } else {
-            return (
+            return (                
             <div>
             <div className="columns is-multiline">
-                {this.props.dinosaurs.map(dino => 
+                {this.props.dinosaurs.map(dino =>
                 <div className="column is-one-third" key={dino.id}>
                     <div className="card">
                         <div className="card-content">
-                            <p className="title">{dino.genus}</p>
+                            <div className="media">
+                                <div className="media-left">
+                                <figure className="image is-48x48">
+                                    <img src={Theropod} />
+                                </figure>
+                                </div>
+                                <p className="title">{dino.genus}</p>
+                            </div>                            
                        </div>
                        <footer className="card-footer">
                            <p className="card-footer-item">

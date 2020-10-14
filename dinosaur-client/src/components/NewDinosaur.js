@@ -45,6 +45,7 @@ class NewDinosaur extends Component {
     handleSubmit = event => {
         event.preventDefault();
         this.props.newDinosaur(this.state);
+        this.props.history.push('/')
     }
 
     render() {
