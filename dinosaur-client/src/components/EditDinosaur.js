@@ -45,6 +45,7 @@ class EditDinosaur extends Component {
     handleSubmit = event => {
         event.preventDefault();
         this.props.editDinosaur(this.state);
+        this.props.history.push('/')
     }
 
     render() {

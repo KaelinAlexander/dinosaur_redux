@@ -72,6 +72,6 @@ export const editDinosaur = (formData) => {
             body: JSON.stringify(strongParams)
         })
         .then(resp => resp.json())
-        .then(dinosaur => dispatch({ type: 'EDIT_DINOSAUR', dinosaur}))
+        .then(dinosaur => dispatch({ type: 'UPDATE_DINOSAUR', dinosaur}))
     }
 }
