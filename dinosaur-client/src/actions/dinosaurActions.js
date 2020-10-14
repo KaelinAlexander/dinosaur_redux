@@ -32,17 +32,18 @@ export const newDinosaur = (formData) => {
             body: JSON.stringify(strongParams)
         })
         .then(response => response.json())
-        .then(dinosaur => console.log(dinosaur))
+        .then(dinosaur => dispatch({ type: 'NEW_DINOSAUR', dinosaur}))
     }
 }
 
 export const deleteDinosaur = (id) => {
+    debugger
     return (dispatch) => {
         fetch('http://localhost:3001/dinosaurs/' + id, {
             method: "DELETE"
         })
         .then(response => console.log(response))
-        .then(dinosaur => console.log("Deleted!"))
+        .then(dinosaur => dispatch({ type: 'DELETE_DINOSAUR', id }))
     }
 }
 
@@ -50,7 +51,6 @@ export const editDinosaur = (formData) => {
     return (dispatch) => {
         const strongParams = {
             dinosaur: {
-                id: formData.id,
                 genus: formData.genus,
                 grouping: formData.grouping,
                 meaning: formData.meaning,
@@ -72,6 +72,6 @@ export const editDinosaur = (formData) => {
             body: JSON.stringify(strongParams)
         })
         .then(resp => resp.json())
-        .then(dinosaur => console.log(dinosaur))
+        .then(dinosaur => dispatch({ type: 'EDIT_DINOSAUR', dinosaur}))
     }
 }
