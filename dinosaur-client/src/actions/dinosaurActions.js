@@ -50,6 +50,7 @@ export const editDinosaur = (formData) => {
     return (dispatch) => {
         const strongParams = {
             dinosaur: {
+                id: formData.id,
                 genus: formData.genus,
                 grouping: formData.grouping,
                 meaning: formData.meaning,
@@ -62,7 +63,7 @@ export const editDinosaur = (formData) => {
                 description: formData.description
             }
         }
-        fetch('http://localhost:3001/dinosaurs/' + id, {
+        fetch('http://localhost:3001/dinosaurs/' + formData.id, {
             method: "PATCH",
             headers: {
                 "Accept": "application/json",
@@ -72,4 +73,5 @@ export const editDinosaur = (formData) => {
         })
         .then(resp => resp.json())
         .then(dinosaur => console.log(dinosaur))
+    }
 }

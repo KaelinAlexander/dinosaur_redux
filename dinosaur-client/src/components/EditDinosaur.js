@@ -4,7 +4,8 @@ import { editDinosaur } from '../actions/dinosaurActions'
 
 class EditDinosaur extends Component {
 
-    state = { 
+    state = {
+            id: this.props.dinosaur.id,
             genus: this.props.dinosaur.genus,
             grouping: this.props.dinosaur.grouping,
             meaning: this.props.dinosaur.meaning,
