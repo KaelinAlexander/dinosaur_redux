@@ -45,3 +45,9 @@ export const deleteDinosaur = (id) => {
         .then(dinosaur => console.log("Deleted!"))
     }
 }
+
+export const editDinosaur = (id) => {
+    return (dispatch) => {
+        
+    }
+}

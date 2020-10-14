@@ -31,7 +31,7 @@ class Home extends Component {
                               <Link to={"/dinosaurs/" + dino.id }>View</Link> 
                            </p>
                            <p className="card-footer-item">
-                              <Link to="/about">Edit</Link> 
+                              <Link to={"/dinosaurs/edit/" + dino.id }>Edit</Link> 
                            </p>
                            <p className="card-footer-item">
                               <Link to="/about">Delete</Link> 
