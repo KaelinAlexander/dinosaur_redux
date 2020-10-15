@@ -36,11 +36,10 @@ class Home extends Component {
                         <div className="card-content">
                             <div className="media">
                                 <div className="media-left">
-                                <figure className="image is-48x48">
-                                    {/* <img src={`${dino.grouping}`} /> */}
-                                    <img src={dino.grouping} alt="Grouping" />
+                                <figure className="image is-96x96">
+                                    <img src={`/groups/${dino.grouping}.jpg`} alt="Grouping" onerror="this.src='/groups/Theropod.jpg'" />
                                 </figure>
-                                </div>
+                                </div>                                
                                 <p className="title">{dino.genus}</p>
                             </div>                            
                        </div>
@@ -56,7 +55,7 @@ class Home extends Component {
                               </Link> 
                            </p>
                            <p className="card-footer-item">
-                              <Link id={dino.id} onClick={this.handleClick}>
+                              <Link id={dino.id}>
                                 <FontAwesomeIcon id={dino.id} onClick={this.handleClick} icon={["far", "trash-alt"]} color="black" />
                               </Link> 
                            </p>
