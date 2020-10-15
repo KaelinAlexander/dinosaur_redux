@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faTrashAlt, faListAlt, faEdit } from '@fortawesome/free-regular-svg-icons'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
@@ -7,6 +10,8 @@ import Dinosaur from './components/Dinosaur'
 import NewDinosaur from './components/NewDinosaur'
 import EditDinosaur from './components/EditDinosaur'
 import './App.sass';
+
+library.add(fab, faEdit, faTrashAlt, faListAlt)
 
 class App extends Component {
   

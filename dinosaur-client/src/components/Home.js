@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { connect } from 'react-redux'
 import { fetchDinosaurs } from '../actions/dinosaurActions'
 import { deleteDinosaur } from '../actions/dinosaurActions'
@@ -13,7 +14,7 @@ class Home extends Component {
     }
 
     handleClick = event => {
-        let deleteId = parseInt(event.target.id)
+        let deleteId = parseInt(event.target.parentElement.id)
         this.props.deleteDinosaur(deleteId)
         this.props.history.push('/')
     }
@@ -36,7 +37,8 @@ class Home extends Component {
                             <div className="media">
                                 <div className="media-left">
                                 <figure className="image is-48x48">
-                                    <img src={Theropod} />
+                                    {/* <img src={`${dino.grouping}`} /> */}
+                                    <img src={dino.grouping} alt="Grouping" />
                                 </figure>
                                 </div>
                                 <p className="title">{dino.genus}</p>
@@ -44,13 +46,19 @@ class Home extends Component {
                        </div>
                        <footer className="card-footer">
                            <p className="card-footer-item">
-                              <Link to={"/dinosaurs/" + dino.id }>View</Link> 
+                              <Link to={"/dinosaurs/" + dino.id }>
+                                  <FontAwesomeIcon icon={["far", "list-alt"]} color="black" />
+                              </Link> 
                            </p>
                            <p className="card-footer-item">
-                              <Link to={"/dinosaurs/edit/" + dino.id }>Edit</Link> 
+                              <Link to={"/dinosaurs/edit/" + dino.id }>
+                                <FontAwesomeIcon icon={["far", "edit"]} color="black" />
+                              </Link> 
                            </p>
                            <p className="card-footer-item">
-                              <a id={dino.id} onClick={this.handleClick}>Delete</a> 
+                              <Link id={dino.id} onClick={this.handleClick}>
+                                <FontAwesomeIcon id={dino.id} onClick={this.handleClick} icon={["far", "trash-alt"]} color="black" />
+                              </Link> 
                            </p>
                        </footer>
                     </div>
