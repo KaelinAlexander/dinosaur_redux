@@ -2,13 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteDinosaur } from '../actions/dinosaurActions'
+import Basics from './showTabs/Basics'
+import History from './showTabs/History'
+import Clade from './showTabs/Clade'
 
 class Dinosaur extends Component {
 
     state = {
         basicsShow: "",
         historyShow: "is-hidden",
-        cladeShow: "is-hidden"
+        cladeShow: "is-hidden",
+        basicsTabSelected: "is-active",
+        historyTabSelected: "",
+        cladeTabSelected: ""
     }
 
     handleClick = () => {
@@ -20,7 +26,10 @@ class Dinosaur extends Component {
         this.setState({
             basicsShow: "",
             historyShow: "is-hidden",
-            cladeShow: "is-hidden"
+            cladeShow: "is-hidden",
+            basicsTabSelected: "is-active",
+            historyTabSelected: "",
+            cladeTabSelected: ""
         })
     }
 
@@ -28,7 +37,10 @@ class Dinosaur extends Component {
         this.setState({
             basicsShow: "is-hidden",
             historyShow: "",
-            cladeShow: "is-hidden"
+            cladeShow: "is-hidden",
+            basicsTabSelected: "",
+            historyTabSelected: "is-active",
+            cladeTabSelected: ""
         })
     }
 
@@ -36,25 +48,28 @@ class Dinosaur extends Component {
         this.setState({
             basicsShow: "is-hidden",
             historyShow: "is-hidden",
-            cladeShow: ""
+            cladeShow: "",
+            basicsTabSelected: "",
+            historyTabSelected: "",
+            cladeTabSelected: "is-active"
         })
     }
 
     render() {
-        if (this.props.dinosaur) {
+        if (this.props.dinosaur ) {
         return(
         <div>
             <div className="columns">
                 <div className="column">
                     <div className="tabs is-centered is-boxed">
                         <ul>
-                            <li>
+                            <li className={this.state.basicsTabSelected}>
                             <Link onClick={this.handleBasics}>Basics</Link>  
                             </li>
-                            <li>
+                            <li className={this.state.historyTabSelected}>
                             <Link onClick={this.handleHistory}>History</Link>  
                             </li>
-                            <li>
+                            <li className={this.state.cladeTabSelected}>
                             <Link onClick={this.handleClade}>Clade</Link>  
                             </li>
                         </ul>
@@ -65,15 +80,15 @@ class Dinosaur extends Component {
             <div id="tab-content">
 
                 <div id="dino-basics" className={this.state.basicsShow}>
-                It worked! Let's find out all about {this.props.dinosaur.genus}!
+                    <Basics dinosaur={this.props.dinosaur} />
                 </div>
 
                 <div id="dino-history" className={this.state.historyShow}>
-                This is the history page.
+                    <History dinosaur={this.props.dinosaur} />
                 </div>
 
                 <div id="dino-clade" className={this.state.cladeShow}>
-                This is the clade page.
+                    <Clade dinosaur={this.props.dinosaur} />
                 </div>
 
             </div>

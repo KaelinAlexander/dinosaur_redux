@@ -44,8 +44,7 @@ class NewDinosaur extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.newDinosaur(this.state);
-        this.props.history.push('/')
+        this.props.newDinosaur(this.state, this.props.history);
     }
 
     render() {
@@ -198,7 +197,7 @@ class NewDinosaur extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-    return { newDinosaur: (formData) => dispatch(newDinosaur(formData)) }
+    return { newDinosaur: (formData, history) => dispatch(newDinosaur(formData, history)) }
 }
 
 export default connect(null, mapDispatchToProps)(NewDinosaur)

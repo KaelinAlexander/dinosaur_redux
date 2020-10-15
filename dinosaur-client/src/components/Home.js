@@ -4,19 +4,40 @@ import { connect } from 'react-redux'
 import { fetchDinosaurs } from '../actions/dinosaurActions'
 import { deleteDinosaur } from '../actions/dinosaurActions'
 import { Link } from 'react-router-dom'
-import Sauropod from '../assets/groups/Sauropod.jpg'
-import Theropod from '../assets/groups/Theropod.jpg'
 
 class Home extends Component {
+
+    state = {
+        modalToggle: "modal",
+        deleteId: null
+    }
 
     componentDidMount() {
         this.props.fetchDinosaurs()
     }
 
     handleClick = event => {
-        let deleteId = parseInt(event.target.parentElement.id)
+        this.setState({
+            modalToggle: "modal is-active",
+            deleteId: event.target.parentElement.id
+        })
+    }
+
+    handleModalAway = event => {
+        this.setState({
+            modalToggle: "modal",
+            deleteId: null
+        })
+    }
+
+    handleDelete = event => {
+        let deleteId = parseInt(this.state.deleteId)
         this.props.deleteDinosaur(deleteId)
         this.props.history.push('/')
+        this.setState({
+            modalToggle: "modal",
+            deleteId: null
+        })
     }
 
     handleLoading = () => {
@@ -37,7 +58,7 @@ class Home extends Component {
                             <div className="media">
                                 <div className="media-left">
                                 <figure className="image is-96x96">
-                                    <img src={`/groups/${dino.grouping}.jpg`} alt="Grouping" onerror="this.src='/groups/Theropod.jpg'" />
+                                    <img src={`/groups/${dino.grouping}.jpg`} alt="Grouping" />
                                 </figure>
                                 </div>                                
                                 <p className="title">{dino.genus}</p>
@@ -65,10 +86,12 @@ class Home extends Component {
                 )}
             </div>
 
-            <div className="modal">
+            <div className={this.state.modalToggle}>
                 <div className="modal-background"></div>
                 <div className="modal-content has-background-white">
-                <h3>Are you sure you want to delete this?</h3>
+                <h3 className="title">Are you sure you want to delete this?</h3>
+                <button onClick={this.handleDelete}>Yes</button>
+                <button onClick={this.handleModalAway}>No</button>
                 </div>
             </div>
             </div>

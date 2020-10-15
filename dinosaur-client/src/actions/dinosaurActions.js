@@ -7,8 +7,7 @@ export const fetchDinosaurs = () => {
     }
 }
 
-export const newDinosaur = (formData) => {
-    debugger
+export const newDinosaur = (formData, history) => {
     return (dispatch) => {
         const strongParams = {
             dinosaur: {
@@ -33,7 +32,10 @@ export const newDinosaur = (formData) => {
             body: JSON.stringify(strongParams)
         })
         .then(response => response.json())
-        .then(dinosaur => dispatch({ type: 'NEW_DINOSAUR', dinosaur}))
+        .then(dinosaur => {
+            dispatch({ type: 'NEW_DINOSAUR', dinosaur})
+            history.push("/dinosaurs/" + dinosaur.id )
+        })
     }
 }
 
