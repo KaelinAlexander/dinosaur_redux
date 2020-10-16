@@ -61,7 +61,7 @@ class Dinosaur extends Component {
         <div>
             <div className="columns">
                 <div className="column">
-                    <div className="tabs is-centered is-boxed">
+                    <div className="tabs is-centered is-toggle">
                         <ul>
                             <li className={this.state.basicsTabSelected}>
                             <Link onClick={this.handleBasics}>Basics</Link>  
