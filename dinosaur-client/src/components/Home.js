@@ -60,9 +60,15 @@ class Home extends Component {
                                 <figure className="image is-96x96">
                                     <img src={`/groups/${dino.grouping}.jpg`} alt="Grouping" />
                                 </figure>
-                                </div>                                
-                                <p className="title">{dino.genus}</p>
-                            </div>                            
+                                </div>  
+                                <div className="media-content">                              
+                                <p className="title is-4">{dino.genus}</p>
+                                <p className="subtitle is-6">{dino.grouping}</p>
+                                </div>
+                            </div>
+                            <div className="content">
+                            {dino.description}
+                            </div>                          
                        </div>
                        <footer className="card-footer">
                            <p className="card-footer-item">
@@ -88,10 +94,16 @@ class Home extends Component {
 
             <div className={this.state.modalToggle}>
                 <div className="modal-background"></div>
-                <div className="modal-content has-background-white">
-                <h3 className="title">Are you sure you want to delete this?</h3>
-                <button onClick={this.handleDelete}>Yes</button>
-                <button onClick={this.handleModalAway}>No</button>
+                <div className="modal-card">
+                <div className="modal-card-head">
+                <p className="modal-card-title">Are you sure you want to delete this dinosaur?</p>
+                </div>
+                <div className="modal-card-foot">
+                <div className="buttons has-addons is-centered">
+                <button className="button" onClick={this.handleDelete}>Yes</button>
+                <button className="button" onClick={this.handleModalAway}>No</button>
+                </div>
+                </div>
                 </div>
             </div>
             </div>

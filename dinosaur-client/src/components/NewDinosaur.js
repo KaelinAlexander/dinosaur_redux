@@ -280,23 +280,29 @@ class NewDinosaur extends Component {
 
                 <div className={this.state.modalToggle}>
                 <div className="modal-background"></div>
-                <div className="modal-content has-background-white">
-                <h3 className="title">Please fix the following issues:</h3>
-                <span style={{color: "red"}}>{this.state.errors["genus"]}</span>
-                <br />
-                <span style={{color: "red"}}>{this.state.errors["meaning"]}</span>
-                <br />
-                <span style={{color: "red"}}>{this.state.errors["type_species"]}</span>
-                <br />
-                <span style={{color: "red"}}>{this.state.errors["discovery_person"]}</span>
-                <br />
-                <span style={{color: "red"}}>{this.state.errors["grouping"]}</span>
-                <br />
-                <span style={{color: "red"}}>{this.state.errors["period"]}</span>
-                <br />
-                <span style={{color: "red"}}>{this.state.errors["distribution"]}</span>
-                <br />
-                <button onClick={this.handleModalAway}>Got it!</button>
+                <div className="modal-card">
+                <header className="modal-card-head">
+                    <p className="modal-card-title">Please fix the following errors:</p>
+                </header>
+                <section className="modal-card-body">              
+                    <span style={{color: "red"}}>{this.state.errors["genus"]}</span>
+                    <br />
+                    <span style={{color: "red"}}>{this.state.errors["meaning"]}</span>
+                    <br />
+                    <span style={{color: "red"}}>{this.state.errors["type_species"]}</span>
+                    <br />
+                    <span style={{color: "red"}}>{this.state.errors["discovery_person"]}</span>
+                    <br />
+                    <span style={{color: "red"}}>{this.state.errors["grouping"]}</span>
+                    <br />
+                    <span style={{color: "red"}}>{this.state.errors["period"]}</span>
+                    <br />
+                    <span style={{color: "red"}}>{this.state.errors["distribution"]}</span>
+                    <br />
+                </section>
+                <footer className="modal-card-foot">
+                <button className="button" onClick={this.handleModalAway}>Got it!</button>
+                </footer>
                 </div>
             </div>
             </div>
