@@ -31,6 +31,13 @@ render() {
               </Switch>
             </div>
           </section>
+          <footer className="footer">
+            <div className="container">
+                <div className="content has-text-left">
+                <p>Work in progress.</p>
+                </div>
+                </div>
+            </footer>
         </div>
       </BrowserRouter>
     );

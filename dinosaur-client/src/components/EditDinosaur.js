@@ -49,10 +49,8 @@ class EditDinosaur extends Component {
     }
 
     render() {
-
         const dinoToEdit = this.props.dinosaur ? (
         <div>
-            <h1>You've reached the dinosaur edit page for {this.props.dinosaur.genus}!</h1>
                 <form onSubmit={event => this.handleSubmit(event)}>
                     <div className="field">
                         <label className="label">Name</label>

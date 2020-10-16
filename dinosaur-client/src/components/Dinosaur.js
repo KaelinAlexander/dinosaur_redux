@@ -56,50 +56,53 @@ class Dinosaur extends Component {
     }
 
     render() {
-        if (this.props.dinosaur ) {
-        return(
-        <div>
-            <div className="columns">
-                <div className="column">
-                    <div className="tabs is-centered is-toggle">
-                        <ul>
-                            <li className={this.state.basicsTabSelected}>
-                            <Link onClick={this.handleBasics}>Basics</Link>  
-                            </li>
-                            <li className={this.state.historyTabSelected}>
-                            <Link onClick={this.handleHistory}>History</Link>  
-                            </li>
-                            <li className={this.state.cladeTabSelected}>
-                            <Link onClick={this.handleClade}>Clade</Link>  
-                            </li>
-                        </ul>
+        const dinosaur = this.props.dinosaur
+        if ( dinosaur ) {
+            return (
+                <div>
+                    <div className="columns">
+                        <div className="column">
+                            <div className="tabs is-centered is-toggle">
+                                <ul>
+                                    <li className={this.state.basicsTabSelected}>
+                                    <Link onClick={this.handleBasics}>Basics</Link>  
+                                    </li>
+                                    <li className={this.state.historyTabSelected}>
+                                    <Link onClick={this.handleHistory}>History</Link>  
+                                    </li>
+                                    <li className={this.state.cladeTabSelected}>
+                                    <Link onClick={this.handleClade}>Clade</Link>  
+                                    </li>
+                                    <li>
+                                    <Link onClick={this.handleClick}>Delete</Link>  
+                                    </li>
+                                    <li>
+                                    <Link to={"/dinosaurs/edit/" + this.props.dinosaur.id }>Edit</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div id="tab-content">
+        
+                        <div id="dino-basics" className={this.state.basicsShow}>
+                            <Basics dinosaur={this.props.dinosaur} />
+                        </div>
+        
+                        <div id="dino-history" className={this.state.historyShow}>
+                            <History dinosaur={this.props.dinosaur} />
+                        </div>
+        
+                        <div id="dino-clade" className={this.state.cladeShow}>
+                            <Clade dinosaur={this.props.dinosaur} />
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div id="tab-content">
-
-                <div id="dino-basics" className={this.state.basicsShow}>
-                    <Basics dinosaur={this.props.dinosaur} />
-                </div>
-
-                <div id="dino-history" className={this.state.historyShow}>
-                    <History dinosaur={this.props.dinosaur} />
-                </div>
-
-                <div id="dino-clade" className={this.state.cladeShow}>
-                    <Clade dinosaur={this.props.dinosaur} />
-                </div>
-
-            </div>
-            
-            <button onClick={this.handleClick}>Delete Dinosaur</button>
-
-        </div>
-        )
+            )
         } else {
             return (
-                <h1>Content loading...</h1>
+                <div>Loading...</div>
             )
         }
     }
