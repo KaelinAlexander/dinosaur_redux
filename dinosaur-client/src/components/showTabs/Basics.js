@@ -15,8 +15,8 @@ const Basics = ({dinosaur}) => {
             <p className="subtitle is-3">{dinosaur.grouping}</p>
             <br />
 
-            <p className="subtitle is-4">Size: {dinosaur.size} meters</p>
-            <p className="subtitle is-4">Distribution: {dinosaur.distribution} meters</p>
+            <p className="subtitle is-4">Size: {dinosaur.size} meter(s)</p>
+            <p className="subtitle is-4">Distribution: {dinosaur.distribution}</p>
             <p className="subtitle is-4">Lived during the {dinosaur.period}</p>
             </div>
         </div>

@@ -71,6 +71,11 @@ class NewDinosaur extends Component {
             errors["grouping"] = "Please supply a standard grouping, or select 'Unknown.'"
         }
 
+        if ( fields["meaning"] === "" ) {
+            formIsValid = false;
+            errors["meaning"] = "Please supply a meaning of the genus, or take a guess."
+        }
+        
         if ( fields["meaning"] !== "" ) {
             if ( !fields["meaning"].match(/^[a-zA-Z]+$/) ){
                 formIsValid = false;
@@ -85,6 +90,16 @@ class NewDinosaur extends Component {
             }
         }
 
+        if ( fields["type_species"] === "" ) {
+            formIsValid = false;
+            errors["type_species"] = "Please supply type species for the genus."
+        }
+
+        if ( fields["discovery_person"] === "" ) {
+            formIsValid = false;
+            errors["discovery_person"] = "Who first named this dinosaur?"
+        }
+
         if ( fields["discovery_person"] !== "" ) {
             if ( !fields["discovery_person"].match(/^[a-zA-Z]+$/) ){
                 formIsValid = false;
@@ -96,6 +111,11 @@ class NewDinosaur extends Component {
             debugger
             formIsValid = false;
             errors["period"] = "Please indicate the period, or select 'Unknown.'"
+        }
+
+        if ( fields["distribution"] === "" ) {
+            formIsValid = false;
+            errors["distribution"] = "Where did this dinosaur live?"
         }
 
         if ( fields["distribution"] !== "" ) {
@@ -153,12 +173,12 @@ class NewDinosaur extends Component {
                                         onChange={event => this.handleGroupingChange(event)}>
                                             <option value=""></option>
                                             <option value="Ankylosaur">Ankylosaur</option>
-                                            <option value="Stegosaur">Stegosaur</option>
-                                            <option value="Pachycephalosaur">Pachycephalosaur</option>
                                             <option value="Ceratopsid">Ceratopsid</option>
                                             <option value="Ornithopod">Ornithopod</option>
+                                            <option value="Pachycephalosaur">Pachycephalosaur</option>                                          
                                             <option value="Prosauropod">Prosauropod</option>
                                             <option value="Sauropod">Sauropod</option>
+                                            <option value="Stegosaur">Stegosaur</option>
                                             <option value="Theropod">Theropod</option>
                                             <option value="Unknown">Unknown</option>
                                         </select>
