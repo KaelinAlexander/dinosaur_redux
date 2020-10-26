@@ -76,19 +76,19 @@ class NewDinosaur extends Component {
             errors["meaning"] = "Please supply a meaning of the genus, or take a guess."
         }
         
-        if ( fields["meaning"] !== "" ) {
-            if ( !fields["meaning"].match(/^[a-zA-Z]+$/) ){
-                formIsValid = false;
-                errors["meaning"] = "Only user letters for the dinosaur's meaning, please."
-            }
-        }
+        // if ( fields["meaning"] !== "" ) {
+        //     if ( !fields["meaning"].match(/^[a-zA-Z]+$/) ){
+        //         formIsValid = false;
+        //         errors["meaning"] = "Only user letters for the dinosaur's meaning, please."
+        //     }
+        // }
 
-        if ( fields["type_species"] !== "" ) {
-            if ( !fields["type_species"].match(/^[a-zA-Z]+$/) ){
-                formIsValid = false;
-                errors["type_species"] = "Only letters for the dinosaur's type species, please."
-            }
-        }
+        // if ( fields["type_species"] !== "" ) {
+        //     if ( !fields["type_species"].match(/^[a-zA-Z]+$/) ){
+        //         formIsValid = false;
+        //         errors["type_species"] = "Only letters for the dinosaur's type species, please."
+        //     }
+        // }
 
         if ( fields["type_species"] === "" ) {
             formIsValid = false;
@@ -100,12 +100,12 @@ class NewDinosaur extends Component {
             errors["discovery_person"] = "Who first named this dinosaur?"
         }
 
-        if ( fields["discovery_person"] !== "" ) {
-            if ( !fields["discovery_person"].match(/^[a-zA-Z]+$/) ){
-                formIsValid = false;
-                errors["discovery_person"] = "Only letters for the person who discovered or named the dinosaur, please."
-            }
-        }
+        // if ( fields["discovery_person"] !== "" ) {
+        //     if ( !fields["discovery_person"].match(/^[a-zA-Z]+$/) ){
+        //         formIsValid = false;
+        //         errors["discovery_person"] = "Only letters for the person who discovered or named the dinosaur, please."
+        //     }
+        // }
 
         if ( fields["period"] !== "Early Triassic" && fields["period"] !== "Middle Triassic" && fields["period"] !== "Late Triassic" && fields["period"] !== "Early Jurassic" && fields["period"] !== "Middle Jurassic" && fields["period"] !== "Late Jurassic" && fields["period"] !== "Early Cretaceous" && fields["period"] !== "Late Cretaceous" && fields["period"] !== "Unknown" ) {
             debugger
@@ -118,12 +118,12 @@ class NewDinosaur extends Component {
             errors["distribution"] = "Where did this dinosaur live?"
         }
 
-        if ( fields["distribution"] !== "" ) {
-            if ( !fields["distribution"].match(/^[a-zA-Z]+$/) ){
-                formIsValid = false;
-                errors["distribution"] = "Only letters for the dinosaur's global distribution, please."
-            }
-        }
+        // if ( fields["distribution"] !== "" ) {
+        //     if ( !fields["distribution"].match(/^[a-zA-Z]+$/) ){
+        //         formIsValid = false;
+        //         errors["distribution"] = "Only letters for the dinosaur's global distribution, please."
+        //     }
+        // }
 
         this.setState({errors: errors});
         return formIsValid

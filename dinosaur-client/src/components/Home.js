@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { connect } from 'react-redux'
 import { fetchDinosaurs } from '../actions/dinosaurActions'
 import { deleteDinosaur } from '../actions/dinosaurActions'
+import LikeButton from './LikeButton'
 import { Link } from 'react-router-dom'
 
 class Home extends Component {
@@ -85,6 +86,9 @@ class Home extends Component {
                               <Link id={dino.id}>
                                 <FontAwesomeIcon id={dino.id} onClick={this.handleClick} icon={["far", "trash-alt"]} color="black" />
                               </Link> 
+                           </p>
+                           <p className="card-footer-item">
+                             <LikeButton />
                            </p>
                        </footer>
                     </div>

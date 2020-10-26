@@ -1,4 +1,5 @@
 const dinosaursReducer = (state = { loading: false, dinosaurs: [] }, action) => {
+    console.log('e')
     switch(action.type) {
 
         case 'START_ADDING_DINOSAURS_REQUEST':
