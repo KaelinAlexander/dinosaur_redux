@@ -7,9 +7,8 @@ class LikeButton extends Component {
     }
 
     handleClick = () => {
-        const oldLikes = this.state.likes
         this.setState({
-            likes: oldLikes + 1
+            likes: this.state.likes + 1
         })
     }
 

@@ -40,7 +40,6 @@ export const newDinosaur = (formData, history) => {
 }
 
 export const deleteDinosaur = (id) => {
-    console.log('a')
     return (dispatch) => {
         fetch('http://localhost:3001/dinosaurs/' + id, {
             method: "DELETE"
@@ -48,11 +47,8 @@ export const deleteDinosaur = (id) => {
         .then(response => console.log(response))
         .then(dinosaur => {
             dispatch({ type: 'DELETE_DINOSAUR', id })
-            console.log('b')
         })
-        console.log('c')
     }
-    console.log('d')
 }
 
 export const editDinosaur = (formData) => {
