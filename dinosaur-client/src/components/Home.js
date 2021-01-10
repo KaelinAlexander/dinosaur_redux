@@ -152,19 +152,19 @@ class Home extends Component {
                     )}
                 </div>
                 <div className={this.state.modalToggle}>
-                <div className="modal-background"></div>
-                <div className="modal-card">
-                <div className="modal-card-head">
-                <p className="modal-card-title">Are you sure you want to delete this dinosaur?</p>
-                </div>
-                <div className="modal-card-foot">
-                <div className="buttons has-addons is-centered">
-                <button className="button" onClick={this.handleDelete}>Yes</button>
-                <button className="button" onClick={this.handleModalAway}>No</button>
-                </div>
-                </div>
-                </div>
-            </div>
+                    <div className="modal-background"></div>
+                        <div className="modal-card">
+                            <div className="modal-card-head">
+                                <p className="modal-card-title">Are you sure you want to delete this dinosaur?</p>
+                            </div>
+                            <div className="modal-card-foot">
+                                <div className="buttons has-addons is-centered">
+                                <button className="button" onClick={this.handleDelete}>Yes</button>
+                                <button className="button" onClick={this.handleModalAway}>No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         } else {
